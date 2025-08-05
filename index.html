@@ -6,19 +6,39 @@
     <title>Medication Reminder</title>
     <link rel="stylesheet" href="style.css">
 </head>
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
-      appId: "00a446b4-5d0d-4ab0-982c-e1605a9ab544",
-      safari_web_id: "web.onesignal.auto.3377791d-2467-4a62-9fdc-3aca1a0bc947",
+      appId: "YOUR-ONESIGNAL-APP-ID",
       notifyButton: {
         enable: true,
       },
     });
   });
+  // Force the subscription prompt
+  OneSignalDeferred.push(function() {
+    OneSignal.showSlidedownPrompt();
+  });
 </script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "YOUR-ONESIGNAL-APP-ID",
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+  // Force the subscription prompt
+  OneSignalDeferred.push(function() {
+    OneSignal.showSlidedownPrompt();
+  });
+</script>
+
     
 <body>
     <div class="app">
