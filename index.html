@@ -6,40 +6,25 @@
     <title>Medication Reminder</title>
     <link rel="stylesheet" href="style.css">
 </head>
-   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "YOUR-ONESIGNAL-APP-ID",
-      notifyButton: {
-        enable: true,
-      },
-    });
+   
+// Ask user for permission and get FCM token
+<script>    
+function requestPermission() {
+  Notification.requestPermission().then(permission => {
+    if (permission === 'granted') {
+      messaging.getToken({
+        vapidKey: 'YOUR_WEB_PUSH_CERTIFICATE_KEY_PAIR'
+      }).then((token) => {
+        console.log('FCM Token:', token); // Save this token on your backend to send notifications later
+      }).catch((err) => {
+        console.log('Error getting token', err);
+      });
+    }
   });
-  // Force the subscription prompt
-  OneSignalDeferred.push(function() {
-    OneSignal.showSlidedownPrompt();
-  });
+}
+requestPermission();
 </script>
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "YOUR-ONESIGNAL-APP-ID",
-      notifyButton: {
-        enable: true,
-      },
-    });
-  });
-  // Force the subscription prompt
-  OneSignalDeferred.push(function() {
-    OneSignal.showSlidedownPrompt();
-  });
-</script>
-
-    
+ 
 <body>
     <div class="app">
         <!-- Header -->
