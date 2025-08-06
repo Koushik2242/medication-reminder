@@ -8,23 +8,7 @@
 </head>
    
 // Ask user for permission and get FCM token
-<script>    
-function requestPermission() {
-  Notification.requestPermission().then(permission => {
-    if (permission === 'granted') {
-      messaging.getToken({
-        vapidKey: 'YOUR_WEB_PUSH_CERTIFICATE_KEY_PAIR'
-      }).then((token) => {
-        console.log('FCM Token:', token); // Save this token on your backend to send notifications later
-      }).catch((err) => {
-        console.log('Error getting token', err);
-      });
-    }
-  });
-}
-requestPermission();
-</script>
- 
+
 <body>
     <div class="app">
         <!-- Header -->
